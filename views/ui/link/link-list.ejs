@@ -3,8 +3,8 @@
     <div class="container-fluid">
         <div id="pad-wrapper" class="users-list">
             <div class="row-fluid header">
-                <h3>分类列表</h3>
-                <div style="margin-left: 65%">
+                <h3>友链列表</h3>
+                <div style="margin-left: 82.3%">
                     <button class="btn btn-success">添加</button>
                 </div>
             </div>
@@ -17,27 +17,51 @@
                             序号
                         </th>
                         <th class="span2 sortable">
+                            url
+                        </th>
+                        <th class="span2 sortable">
                             名称
                         </th>
-                        <th class="span3 sortable">
+                        <th class="span1 sortable">
+                            跳转数
+                        </th>
+                        <th class="span1 sortable">
+                            排序
+                        </th>
+                        <th class="span1 sortable">
+                            状态
+                        </th>
+                        <th class="span2 sortable">
                             创建时间
                         </th>
-                        <th class="span3 sortable">
+                        <th class="span2 sortable">
                             操作
                         </th>
                     </tr>
                     </thead>
                     <tbody>
-                    <% for (var i = 0;i < data.length;i++) { var cate = data[i] %>
+                    <% for (var i = 0;i < list.length;i++) { var link = list[i] %>
                     <tr>
                         <td>
                             <%= i + 1 %>
                         </td>
                         <td>
-                            <%= cate.name %>
+                            <a href="<%= link.url %>" target="_blank"><%= link.url %></a>
                         </td>
                         <td>
-                            <%= cate.createTime %>
+                            <%= link.name %>
+                        </td>
+                        <td>
+                            <%= link.clickNum %>
+                        </td>
+                        <td>
+                            <%= link.sort %>
+                        </td>
+                        <td>
+                            <%= link.status %>
+                        </td>
+                        <td>
+                            <%= link.createTime %>
                         </td>
                         <td>
                             <button class="btn btn-info">修改</button>

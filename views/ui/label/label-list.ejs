@@ -3,8 +3,8 @@
     <div class="container-fluid">
         <div id="pad-wrapper" class="users-list">
             <div class="row-fluid header">
-                <h3>分类列表</h3>
-                <div style="margin-left: 65%">
+                <h3>标签列表</h3>
+                <div style="margin-left: 67.7%">
                     <button class="btn btn-success">添加</button>
                 </div>
             </div>
@@ -19,6 +19,9 @@
                         <th class="span2 sortable">
                             名称
                         </th>
+                        <th class="span1 sortable">
+                            课程数
+                        </th>
                         <th class="span3 sortable">
                             创建时间
                         </th>
@@ -28,16 +31,19 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <% for (var i = 0;i < data.length;i++) { var cate = data[i] %>
+                    <% for (var i = 0;i < list.length;i++) { var label = list[i] %>
                     <tr>
                         <td>
                             <%= i + 1 %>
                         </td>
                         <td>
-                            <%= cate.name %>
+                            <%= label.name %>
                         </td>
                         <td>
-                            <%= cate.createTime %>
+                            <%= label.num %>
+                        </td>
+                        <td>
+                            <%= label.createTime %>
                         </td>
                         <td>
                             <button class="btn btn-info">修改</button>
@@ -49,6 +55,9 @@
                 </table>
             </div>
         </div>
+        <% if(totalPage > 1){ %>
+            <div id="page" pages="<%= totalPage %>" style="padding-top: 20px;"></div>
+        <% } %>
     </div>
 </div>
 <!-- end main container -->

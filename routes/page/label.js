@@ -1,18 +1,23 @@
 /**
- * Created by xbh 2019-07-16
+ * Created by xbh 2019-07-17
  */
 var express = require('express');
 var router = express.Router();
 const api = require('../../service/http-api');
 const ui = require('../../views/ui/index');
 router.get('/', function (req, res, next) {
-    api.category.list()
+    let {pageNum, pageSize} = req.query;
+    if (!pageNum && !pageSize) {
+        pageNum = 1;
+        pageSize = 10;
+    }
+    api.label.list(pageNum, pageSize)
         .then(data => {
-            let category_list_html = ui.category(data.data);
+            let label_list_html = ui.label(data.data);
             res.render('root', {
-                layout: 'page/category',
-                title: '分类列表',
-                category_list_html
+                layout: 'page/label',
+                title: '标签列表',
+                label_list_html
             });
         })
         .catch(e => {

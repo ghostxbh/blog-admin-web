@@ -6,13 +6,18 @@ var router = express.Router();
 const api = require('../../service/http-api');
 const ui = require('../../views/ui/index');
 router.get('/', function (req, res, next) {
-    api.category.list()
+    let {pageNum, pageSize} = req.query;
+    if (!pageNum && !pageSize) {
+        pageNum = 1;
+        pageSize = 10;
+    }
+    api.type.list(pageNum, pageSize)
         .then(data => {
-            let category_list_html = ui.category(data.data);
+            let type_list_html = ui.type(data.data);
             res.render('root', {
-                layout: 'page/category',
-                title: '分类列表',
-                category_list_html
+                layout: 'page/type',
+                title: '文章类型',
+                type_list_html
             });
         })
         .catch(e => {

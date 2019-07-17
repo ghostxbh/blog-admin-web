@@ -14,8 +14,7 @@ const api = {
     type: {
         create: (data) => http.post(`${prefix}/admin/type/create`, data),
         delete: (id) => http.del(`${prefix}/admin/type/delete/${id}`),
-        addContentNum: (id) => http.put(`${prefix}/admin/type/addContentNum/${id}`),
-        list: () => http.get(`${prefix}/admin/type/list`),
+        list: (pageNum, pageSize) => http.get(`${prefix}/admin/type/list?pageNum=${pageNum}&pageSize=${pageSize}`),
         cateList: (categoryId) => http.get(`${prefix}/admin/type/categoryList?categoryId=${categoryId}`),
     },
     content: {
@@ -33,13 +32,14 @@ const api = {
         create: (data) => http.post(`${prefix}/admin/links/create`, data),
         delete: (id) => http.del(`${prefix}/admin/links/delete/${id}`),
         update: (id, data) => http.put(`${prefix}/admin/links/update/${id}`, data),
-        list: () => http.get(`${prefix}/admin/links/list`),
+        list: (status, pageNum, pageSize) => http.get(`${prefix}/admin/links/list?status=${status}&pageNum=${pageNum}&pageSize=${pageSize}`),
     },
     special: {
         create: (data) => http.post(`${prefix}/admin/special/create`, data),
         delete: (id) => http.del(`${prefix}/admin/special/delete/${id}`),
         update: (id, data) => http.put(`${prefix}/admin/special/update/${id}`, data),
         list: () => http.get(`${prefix}/admin/special/list`),
+        detail: (id) => http.get(`${prefix}/admin/special/${id}`),
     },
 };
 module.exports = api;

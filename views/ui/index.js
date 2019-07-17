@@ -4,6 +4,7 @@ const content = require('./content/content-list');
 const special = require('./special/index');
 const label = require('./label/label-list');
 const link = require('./link/link-list');
+const remark = require('./remark/remark-list');
 module.exports = {
     category,
     type,
@@ -11,4 +12,5 @@ module.exports = {
     special,
     label,
     link,
+    remark,
 };
