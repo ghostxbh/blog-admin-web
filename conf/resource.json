@@ -1,0 +1,8 @@
+{
+    "name":"blog-admin-web",
+    "port":8090,
+    "description":"博客后台管理",
+    "url":{
+        "api":"http://140.143.126.226:8080"
+    }
+}
