@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- this page specific styles -->
+    <link rel="stylesheet" href="/css/compiled/new-user.css" type="text/css" media="screen"/>
+</head>
+<body>
+<!-- main container -->
+<div class="content">
+    <div class="container-fluid">
+        <div id="pad-wrapper" class="new-user">
+            <div class="row-fluid header">
+                <h3> 新增专栏 </h3>
+            </div>
+            <div class="row-fluid form-wrapper">
+                <!-- left column -->
+                <div class="span9 with-sidebar">
+                    <div class="container">
+                        <form class="new_user_form inline-input"/>
+                        <div class="span12 field-box">
+                            <label>名称:</label>
+                            <input class="span9" type="text"/>
+                        </div>
+                        <div class="span12 field-box textarea">
+                            <label>描述:</label>
+                            <textarea class="span9" id="description"></textarea>
+                            <span class="charactersleft">100字以内</span>
+                        </div>
+                        <div class="span12 field-box">
+                            <label>图片:</label>
+                            <img style="border:1px solid #f2dede;" height="200px"
+                                 width="300px"/>
+                        </div>
+                        <div class="span12 field-box">
+                            <label>图片上传:</label>
+                            <input class="span9 imginfo" type="file" onchange="upload_img(this.files)" accept=".png,.jpg,.gif"/>
+                            <button class="btn btn-success"  style="margin-left: 2.7%">上传</button>
+                        </div>
+                        <div class="span12 field-box">
+                            <label>排序:</label>
+                            <input class="span9" type="text" placeholder="专栏排序"/>
+                        </div>
+                        <div class="span11 field-box actions">
+                            <input type="button" class="btn-glow primary" id="special-create" value="新增"/>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end main container -->
+</body>
+</html>

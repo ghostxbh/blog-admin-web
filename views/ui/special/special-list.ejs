@@ -1,0 +1,71 @@
+<!-- main container -->
+<div class="content">
+    <div class="container-fluid">
+        <div id="pad-wrapper" class="users-list">
+            <div class="row-fluid header">
+                <h3>专栏列表</h3>
+                <div style="margin-left: 78%">
+                    <a class="btn btn-success" href="/special/add">添加</a>
+                </div>
+            </div>
+            <!-- Users table -->
+            <div class="row-fluid table">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th class="span1 sortable">
+                            序号
+                        </th>
+                        <th class="span2 sortable">
+                            名称
+                        </th>
+                        <th class="span1 sortable">
+                            课程数
+                        </th>
+                        <th class="span1 sortable">
+                            访问数
+                        </th>
+                        <th class="span1 sortable">
+                            排序
+                        </th>
+                        <th class="span2 sortable">
+                            创建时间
+                        </th>
+                        <th class="span2 sortable">
+                            操作
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% for (var i = 0;i < data.length;i++) { var s = data[i] %>
+                    <tr>
+                        <td>
+                            <%= i + 1 %>
+                        </td>
+                        <td>
+                            <%= s.name %>
+                        </td>
+                        <td>
+                            <%= s.contentNum %>
+                        </td>
+                        <td>
+                            <%= s.readNum %>
+                        </td>
+                        <td>
+                            <%= s.sort %>
+                        </td>
+                        <td>
+                            <%= s.createTime %>
+                        </td>
+                        <td>
+                            <a class="btn btn-flat" href="/special/<%= s.id %>">详情</a>
+                        </td>
+                    </tr>
+                    <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end main container -->
