@@ -14,6 +14,7 @@ router.post('/img', function (req, res, next) {
         url: ''
     };
     from.parse(req, function (err, fields, files) {
+        console.log(files);
         let newfile = files['myfile'][0];
         let filename = newfile.originalFilename;
         if (newfile) {
