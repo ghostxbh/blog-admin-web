@@ -4,6 +4,15 @@
         <div id="pad-wrapper" class="users-list">
             <div class="row-fluid header">
                 <h3>友链列表</h3>
+                <div class="form-group">
+                    <span class="type-category">上下线列表：</span>
+                    <select class="selectpicker" id="type-category-list"
+                            onchange="ListByStatus(this.options[this.options.selectedIndex].value)" data-size="8">
+                        <option value="0">全部</option>
+                        <option value="1" <%= status == '1' ? 'selected' :''%>>上线</option>
+                        <option value="-1" <%= status == '-1' ? 'selected' :''%>>下线</option>
+                    </select>
+                </div>
                 <div style="margin-left: 82.3%">
                     <button class="btn btn-success" id="link-add">添加</button>
                 </div>
@@ -68,7 +77,8 @@
                             <%= link.createTime %>
                         </td>
                         <td>
-                            <button class="btn btn-info" onclick="modifyClick('<%= JSON.stringify(link) %>')">修改</button>
+                            <button class="btn btn-info" onclick="modifyClick('<%= JSON.stringify(link) %>')">修改
+                            </button>
                             <button class="btn btn-danger" onclick="deleteClick('<%= link.id %>')">删除</button>
                         </td>
                     </tr>

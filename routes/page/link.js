@@ -7,7 +7,7 @@ const api = require('../../service/http-api');
 const ui = require('../../views/ui/index');
 router.get('/', function (req, res, next) {
     let {status, pageNum, pageSize} = req.query;
-    status = status ? status : '';
+    status = status && status!='0' ? status : '';
     pageNum = pageNum ? pageNum : 1;
     pageSize = pageSize ? pageSize : 10;
     api.link.list(status, pageNum, pageSize)

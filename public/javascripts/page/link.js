@@ -146,3 +146,7 @@ function modifyClick(link) {
     $('#myModal').modal();
 }
 
+function ListByStatus(status) {
+    console.log(status);
+    location.href = '/link?status=' + status;
+}
