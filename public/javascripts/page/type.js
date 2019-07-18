@@ -117,3 +117,7 @@ function modifyClick(type, cateList) {
     $('#myModal').modal();
 }
 
+function goCateList(categoryId) {
+    console.log(categoryId);
+    location.href = '/type?categoryId=' + categoryId;
+}

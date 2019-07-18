@@ -4,6 +4,19 @@
         <div id="pad-wrapper" class="users-list">
             <div class="row-fluid header">
                 <h3>文章类型</h3>
+                <div class="form-group">
+                    <span class="type-category">分类列表：</span>
+                    <select class="selectpicker" id="type-category-list" onchange="goCateList(this.options[this.options.selectedIndex].value)"data-size="8">
+                        <option value="0" selected>全部</option>
+                        <% for(var i = 0; i < cateList.length; i++) { var cate = cateList[i];
+                        if (categoryId && categoryId == cate.id) { %>
+                            <option value="<%= cate.id %>" selected><%= cate.name %></option>
+                        <% }else { %>
+                            <option value="<%= cate.id %>"><%= cate.name %></option>
+                        <% } %>
+                        <% } %>
+                    </select>
+                </div>
                 <div style="margin-left: 73%">
                     <button class="btn btn-success" onclick="createType('<%= JSON.stringify(cateList) %>')">添加</button>
                 </div>
@@ -52,7 +65,10 @@
                             <%= type.createTime %>
                         </td>
                         <td>
-                            <button class="btn btn-info" onclick="modifyClick('<%= JSON.stringify(type) %>','<%= JSON.stringify(cateList) %>')">修改</button>
+                            <button class="btn btn-info"
+                                    onclick="modifyClick('<%= JSON.stringify(type) %>','<%= JSON.stringify(cateList) %>')">
+                                修改
+                            </button>
                             <button class="btn btn-danger" onclick="deleteClick('<%= type.id %>')">删除</button>
                         </td>
                     </tr>
