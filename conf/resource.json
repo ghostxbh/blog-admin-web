@@ -4,5 +4,8 @@
     "description":"博客后台管理",
     "url":{
         "api":"http://127.0.0.1:8080"
-    }
+    },
+    "img_add":"/var/www/html/image",
+    "img_url":"http://static.uzykj.com/image/",
+    "img_size":5242880
 }
