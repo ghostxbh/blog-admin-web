@@ -14,6 +14,7 @@ const api = {
     type: {
         create: (data) => http.post(`${prefix}/admin/type/create`, data),
         delete: (id) => http.del(`${prefix}/admin/type/delete/${id}`),
+        update: (id, data) => http.put(`${prefix}/admin/type/update/${id}`, data),
         list: (pageNum, pageSize) => http.get(`${prefix}/admin/type/list?pageNum=${pageNum}&pageSize=${pageSize}`),
         cateList: (categoryId) => http.get(`${prefix}/admin/type/categoryList?categoryId=${categoryId}`),
     },
