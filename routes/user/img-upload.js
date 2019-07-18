@@ -21,6 +21,7 @@ router.post('/img', function (req, res, next) {
                 result.code = 500;
                 result.message = '文件大小超过5M';
             }else {
+                console.log(conf);
                 fs.rename(newfile.path, conf.img_add + filename, function (e) {
                     if (e) {
                         result.code = 500;
