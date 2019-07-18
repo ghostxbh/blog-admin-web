@@ -1,3 +1,15 @@
+/* all */
+.content-footer{
+    color: black;
+    clear: both;
+    padding: 24px 15px;
+    font-size: 12px;
+    line-height: 12px;
+    text-align: center;
+    background-color: #ececec;
+    -webkit-box-shadow: 0 0 2px 0 rgba(0,0,0,.1);
+    box-shadow: 0 0 2px 0 rgba(0,0,0,.1);
+}
 /* page type */
 #select_category{
     width: 100%;

@@ -5,7 +5,7 @@
             <div class="row-fluid header">
                 <h3>分类列表</h3>
                 <div style="margin-left: 65%">
-                    <button class="btn btn-success">添加</button>
+                    <button class="btn btn-success" id="category-add">添加</button>
                 </div>
             </div>
             <!-- Users table -->
@@ -40,8 +40,8 @@
                             <%= cate.createTime %>
                         </td>
                         <td>
-                            <button class="btn btn-info">修改</button>
-                            <button class="btn btn-danger">删除</button>
+                            <button class="btn btn-info" onclick="modifyClick('<%= JSON.stringify(cate) %>')">修改</button>
+                            <button class="btn btn-danger" onclick="deleteClick(<%= cate.id %>)">删除</button>
                         </td>
                     </tr>
                     <% } %>

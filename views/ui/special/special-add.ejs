@@ -28,13 +28,13 @@
                         </div>
                         <div class="span12 field-box">
                             <label>图片:</label>
-                            <img style="border:1px solid #f2dede;" height="200px"
+                            <img style="border:1px solid #f2dede;" id="show-img" height="200px"
                                  width="300px"/>
                         </div>
                         <div class="span12 field-box">
                             <label>图片上传:</label>
-                            <input class="span9 imginfo" type="file" onchange="upload_img(this.files)" accept=".png,.jpg,.gif"/>
-                            <button class="btn btn-success"  style="margin-left: 2.7%">上传</button>
+                            <input class="span9 imginfo" id="img-input" type="file" accept=".png,.jpg,.gif"/>
+                            <button class="btn btn-success"  style="margin-left: 2.7%" onclick="upload_img()">上传</button>
                         </div>
                         <div class="span12 field-box">
                             <label>排序:</label>

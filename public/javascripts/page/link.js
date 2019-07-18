@@ -40,15 +40,15 @@ $(function () {
         let remark = $('#link-remark').val();
         let status = $('#select_status').val();
         let type = $('.input_type').val();
+        if (!name) {
+            $('#link-name').css('border', '1px solid red');
+            return;
+        }
+        if (!url) {
+            $('#link-url').css('border', '1px solid red');
+            return;
+        }
         if (type === 'add') {
-            if (!name) {
-                $('#link-name').css('border', '1px solid red');
-                return;
-            }
-            if (!url) {
-                $('#link-url').css('border', '1px solid red');
-                return;
-            }
             create({name, url, sort, contact, remark, status});
         } else if (type === 'update') {
             let id = $('#link-id').val();

@@ -5,7 +5,7 @@
             <div class="row-fluid header">
                 <h3>文章类型</h3>
                 <div style="margin-left: 73%">
-                    <button class="btn btn-success">添加</button>
+                    <button class="btn btn-success" onclick="createType('<%= JSON.stringify(cateList) %>')">添加</button>
                 </div>
             </div>
             <!-- Users table -->
@@ -52,8 +52,8 @@
                             <%= type.createTime %>
                         </td>
                         <td>
-                            <button class="btn btn-info">修改</button>
-                            <button class="btn btn-danger">删除</button>
+                            <button class="btn btn-info" onclick="modifyClick('<%= JSON.stringify(type) %>','<%= JSON.stringify(cateList) %>')">修改</button>
+                            <button class="btn btn-danger" onclick="deleteClick('<%= type.id %>')">删除</button>
                         </td>
                     </tr>
                     <% } %>
