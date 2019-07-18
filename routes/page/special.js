@@ -21,6 +21,35 @@ router.get('/', function (req, res, next) {
         })
 });
 
+router.post('/create', function (req, res, next) {
+    api.special.create(req.body)
+        .then(data => res.json(data))
+        .catch(e => {
+            console.log(e);
+            res.json({});
+        })
+});
+
+router.post('/update/:id', function (req, res, next) {
+    let {id} = req.params;
+    api.special.update(id, req.body)
+        .then(data => res.json(data))
+        .catch(e => {
+            console.log(e);
+            res.json({});
+        })
+});
+
+router.get('/del/:id', function (req, res, next) {
+    let {id} = req.params;
+    api.special.delete(id)
+        .then(data => res.json(data))
+        .catch(e => {
+            console.log(e);
+            res.json({});
+        })
+});
+
 router.get('/add', function (req, res, next) {
     let special_add_html = ui.special.specialAdd();
     res.render('root', {

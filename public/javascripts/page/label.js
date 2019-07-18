@@ -1,9 +1,9 @@
 $(function () {
-    $('#category-add').click(function () {
+    $('#label-add').click(function () {
         $('#myModalLabel').empty().text('添加标签');
         let html = `<input type="hidden" class="input_type" value="add">
                     <div class="form-group">
-                        <label for="input_name" id="label-name">标签名称</label>
+                        <label>标签名称</label>
                         <input type="text" class="form-control" id="label-name" placeholder="请输入标签名称">
                     </div>`;
         $('.modal-body').empty().html(html);
@@ -12,10 +12,14 @@ $(function () {
     $('#modal_submit').click(function () {
         let name = $('#label-name').val();
         let type = $('.input_type').val();
+        if (!name) {
+            $('#label-name').css('border', '1px solid red');
+            return;
+        }
         if (type === 'add') {
             create(name);
         } else if (type === 'update') {
-            let id = $('#id').val();
+            let id = $('#label-id').val();
             update(id, name);
         }
     });
@@ -46,7 +50,8 @@ function update(id, name) {
         data: {name: name},
         success: function (result) {
             console.log(result);
-            alert(result.status ? "更新成功" : "更新失败");
+            if (result.code == 200) $('#do-success').removeClass('display');
+            else $('#do-fail').removeClass('display');
             window.location.reload();
         },
         error: function (xhr, state, errorThrown) {
@@ -58,12 +63,12 @@ function update(id, name) {
 
 function deleteClick(id) {
     $.ajax({
-        url: "/category/del/" + id,
+        url: "/label/del/" + id,
         type: "get",
         data: {},
         success: function (result) {
-            if (result.code == 200) $('#do-success').css('dispaly','');
-            else $('#do-fail').css('dispaly','');
+            if (result.code == 200) $('#do-success').css('dispaly', '');
+            else $('#do-fail').css('dispaly', '');
             window.location.reload();
         },
         error: function (xhr, state, errorThrown) {
@@ -73,25 +78,14 @@ function deleteClick(id) {
     });
 }
 
-function modifyClick(category) {
-    category = JSON.parse(category);
+function modifyClick(label) {
+    label = JSON.parse(label);
     $('#myModalLabel').empty().text('更新分类');
-    let html = `<input type="hidden" class="input_type" value="update">          
+    let html = `<input type="hidden" class="input_type" value="update">  
+                <input type="hidden" id="label-id" value="${label.id}">        
                 <div class="form-group">
-                    <label for="input_name" id="input_uid">ID</label>
-                    <input disabled type="text" class="form-control" id="id" value="${category.id}" placeholder="请输入uid">
-                </div>
-                <div class="form-group">
-                    <label for="input_name" id="input_oid">名称</label>
-                    <input type="text" class="form-control" id="name" value="${category.name}" placeholder="请输入oid">
-                </div>
-                <div class="form-group">
-                    <label for="input_name" id="input_oid">名称</label>
-                    <input type="text" class="form-control" id="name" value="${category.name}" placeholder="请输入oid">
-                </div>
-                <div class="form-group">
-                    <label for="input_name" id="input_minip">创建时间</label>
-                    <input disabled type="text" class="form-control" id="createTime" value="${category.createTime}" placeholder="请输入起始ip">
+                    <label for="input_name">名称</label>
+                    <input type="text" class="form-control" id="label-name" value="${label.name}" placeholder="请输入名称">
                 </div>`;
     $('.modal-body').empty().html(html);
     $('#myModal').modal();

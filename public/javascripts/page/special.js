@@ -1,26 +1,79 @@
-function upload_img() {
-    var myfile = document.getElementById("img-input").files[0];
-    console.log(myfile);
-    var formData = new FormData();
-    formData.append("myfile", myfile);
+$(function () {
+    $('#special-create-click').click(function () {
+        let name = $('#special-name').val();
+        let image = $('#special-image-url').val();
+        let description = $('#description').val();
+        let sort = $('#special-sort').val();
+        if (!name) {
+            $('#special-name').css('border', '1px solid red');
+            return;
+        }
+        create({name, image, description, sort});
+    });
+    $('#special-update-click').click(function () {
+        let id = $('#special-id').val();
+        let name = $('#special-name').val();
+        let image = $('#special-image-url').val();
+        let description = $('#description').val();
+        let sort = $('#special-sort').val();
+        let readNum = $('#special-read-num').val();
+        if (!name) {
+            $('#special-name').css('border', '1px solid red');
+            return;
+        }
+        update({id, name, image, description, sort, readNum});
+    });
+});
+
+function create(special) {
     $.ajax({
-        url: "/upload/img",
+        url: "/special/create",
         type: "post",
-        data: formData,
-        cache: false,         //不设置缓存
-        processData: false,  // 不处理数据
-        contentType: false,   // 不设置内容类型
-        success: function (data) {
-            console.log(data);
-            if (data.code == 200) {
-                console.log(data.message);
-                $('#show-img').attr('src', data.url);
-            } else {
-                alert(data.message);
-            }
+        data: special,
+        success: function (result) {
+            location.href = '/special';
         },
-        error: function (data) {
-            console.log(data);
+        error: function (xhr, state, errorThrown) {
+            alert("更新失败！");
+            requesFail(xhr);
         }
     });
 }
+
+function update(special) {
+    $.ajax({
+        url: "/special/update/" + special.id,
+        type: "post",
+        data: special,
+        success: function (result) {
+            console.log(result);
+            if (result.code == 200) $('#do-success').removeClass('display');
+            else $('#do-fail').removeClass('display');
+            window.location.reload();
+        },
+        error: function (xhr, state, errorThrown) {
+            alert("更新失败！");
+            requesFail(xhr);
+        }
+    });
+}
+
+function deleteClick(id) {
+    if (!id) {
+        alert('缺少必要参数');
+        return;
+    }
+    $.ajax({
+        url: "/special/del/" + id,
+        type: "get",
+        data: {},
+        success: function (result) {
+            location.href = '/special';
+        },
+        error: function (xhr, state, errorThrown) {
+            alert("更新失败！");
+            requesFail(xhr);
+        }
+    });
+}
+

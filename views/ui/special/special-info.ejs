@@ -20,15 +20,15 @@
                         <form class="new_user_form inline-input"/>
                         <div class="span12 field-box">
                             <label>ID:</label>
-                            <input class="span9" type="text" value="<%= special.id %>" disabled/>
+                            <input class="span9" type="text" id="special-id" value="<%= special.id %>" disabled/>
                         </div>
                         <div class="span12 field-box">
                             <label>名称:</label>
-                            <input class="span9" type="text" value="<%= special.name %>"/>
+                            <input class="span9" type="text" id="special-name" value="<%= special.name %>"/>
                         </div>
                         <div class="span12 field-box textarea">
                             <label>描述:</label>
-                            <textarea class="span9"><%= special.description %></textarea>
+                            <textarea class="span9" id="description"><%= special.description %></textarea>
                             <span class="charactersleft">100字以内</span>
                         </div>
                         <div class="span12 field-box">
@@ -38,19 +38,21 @@
                         </div>
                         <div class="span12 field-box">
                             <label>图片url:</label>
-                            <input class="span9" type="text" value="<%= special.image %>" placeholder="图片地址"/>
+                            <input class="span9" type="text" id="special-image-url" value="<%= special.image %>"
+                                   placeholder="图片地址"/>
                         </div>
                         <div class="span12 field-box">
                             <label>课程数量:</label>
-                            <input class="span9" type="text" value="<%= special.contentNum %>"/>
+                            <input class="span9" type="text" value="<%= special.contentNum %>" disabled/>
                         </div>
                         <div class="span12 field-box">
                             <label>访问数量:</label>
-                            <input class="span9" type="text" value="<%= special.readNum %>"/>
+                            <input class="span9" type="text" id="special-read-num" value="<%= special.readNum %>"/>
                         </div>
                         <div class="span12 field-box">
                             <label>排序:</label>
-                            <input class="span9" type="text" value="<%= special.sort %>" placeholder="专栏排序"/>
+                            <input class="span9" type="text" id="special-sort" value="<%= special.sort %>"
+                                   placeholder="专栏排序"/>
                         </div>
                         <div class="span12 field-box">
                             <label>创建时间:</label>
@@ -58,9 +60,9 @@
                         </div>
 
                         <div class="span11 field-box actions">
-                            <button class="btn btn-success">更新</button>
+                            <button class="btn btn-success" id="special-update-click">更新</button>
                             <span>OR</span>
-                            <button class="btn btn-danger">删除</button>
+                            <button class="btn btn-danger" onclick="deleteClick('<%= special.id %>')">删除</button>
                         </div>
                         </form>
                     </div>

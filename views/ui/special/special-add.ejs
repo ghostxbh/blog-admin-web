@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <!-- this page specific styles -->
-    <link rel="stylesheet" href="/css/compiled/new-user.css" type="text/css" media="screen"/>
-</head>
-<body>
 <!-- main container -->
 <div class="content">
     <div class="container-fluid">
@@ -17,9 +10,10 @@
                 <div class="span9 with-sidebar">
                     <div class="container">
                         <form class="new_user_form inline-input"/>
+                        <input type="hidden" id="special-image-url" value=""/>
                         <div class="span12 field-box">
                             <label>名称:</label>
-                            <input class="span9" type="text"/>
+                            <input class="span9" type="text" id="special-name"/>
                         </div>
                         <div class="span12 field-box textarea">
                             <label>描述:</label>
@@ -38,10 +32,10 @@
                         </div>
                         <div class="span12 field-box">
                             <label>排序:</label>
-                            <input class="span9" type="text" placeholder="专栏排序"/>
+                            <input class="span9" type="text" id="special-sort" placeholder="专栏排序"/>
                         </div>
                         <div class="span11 field-box actions">
-                            <input type="button" class="btn-glow primary" id="special-create" value="新增"/>
+                            <input type="button" class="btn-glow primary" id="special-create-click" value="新增"/>
                         </div>
                         </form>
                     </div>
@@ -51,5 +45,3 @@
     </div>
 </div>
 <!-- end main container -->
-</body>
-</html>
