@@ -1,9 +1,8 @@
-function upload_img(upfile) {
-    console.log(upfile);
+function upload_img() {
+    var myfile = document.getElementById("img-input").files[0];
+    console.log(myfile);
     var formData = new FormData();
-    for (var i = 0; i < upfile.length; i++) {
-        formData.append("upfile[]", upfile[i]);
-    }
+    formData.append("myfile", myfile);
     $.ajax({
         url: "/upload/img",
         type: "post",
@@ -13,6 +12,12 @@ function upload_img(upfile) {
         contentType: false,   // 不设置内容类型
         success: function (data) {
             console.log(data);
+            if (data.code == 200) {
+                console.log(data.message);
+                $('#show-img').attr('src', data.url);
+            } else {
+                alert(data.message);
+            }
         },
         error: function (data) {
             console.log(data);

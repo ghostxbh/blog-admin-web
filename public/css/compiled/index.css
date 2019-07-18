@@ -193,3 +193,6 @@
     width: 53%; }
   #pad-wrapper .ui-elements .knob-wrapper + .knob-wrapper {
     margin-left: 35px; } }
+.form-group .form-control{
+    width: 97%;
+}
