@@ -15,6 +15,7 @@ $(function () {
         let title = $('#content-title').val();
         let introduction = $('#content-introduction').val();
         let images = $('#content-images').val();
+        if (!images) images = $('#content-url').val();
         let source = $('#content-source').val();
         let content = $('.editormd-html-textarea').val();
         let labels = $('#content-labels').val();
