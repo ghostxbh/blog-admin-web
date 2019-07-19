@@ -1,0 +1,120 @@
+<!-- main container -->
+<div class="content">
+    <div class="container-fluid">
+        <div id="pad-wrapper" class="new-user">
+            <div class="row-fluid header">
+                <h3>写文章</h3>
+            </div>
+            <div class="row-fluid form-wrapper">
+                <!-- left column -->
+                <div class="span9 with-sidebar">
+                    <div class="container">
+                        <form class="new_user_form inline-input"/>
+                        <div class="span12 field-box">
+                            <label>标题：</label>
+                            <input class="span9" type="text" id="content-title"/>
+                        </div>
+                        <div class="span12 field-box textarea">
+                            <label>简介：</label>
+                            <textarea class="span9" id="content-introduction"></textarea>
+                            <span class="charactersleft">120字以内</span>
+                        </div>
+                        <div class="span12 field-box">
+                            <label>图片预览：</label>
+                            <img style="border:1px solid #f2dede;" id="content-images" height="200" width="300"/>
+                        </div>
+                        <div class="span12 field-box">
+                            <label>图片上传：</label>
+                            <input class="span9 imginfo" id="img-input" type="file" accept=".png,.jpg,.gif"/>
+                            <button class="btn btn-success" style="margin-left: 2.7%" onclick="upload_img()">上传</button>
+                        </div>
+                        <div class="span12 field-box">
+                            <label>网络图片：</label>
+                            <input class="span9" type="text" id="content-url" onchange="showImage(this.value)"/>
+                        </div>
+                        <div class="span12 field-box">
+                            <label>文章来源：</label>
+                            <input class="span9" type="text" id="content-source"/>
+                        </div>
+                        <label>文章内容：</label>
+                        <div class="span12 field-box textarea editormd" id="test-editormd">
+                            <textarea class="editormd-markdown-textarea" name="test-editormd-markdown-doc"></textarea>
+                            <!-- 第二个隐藏文本域，用来构造生成的HTML代码，方便表单POST提交，这里的name可以任意取，后台接受时以这个name键为准 -->
+                            <textarea class="editormd-html-textarea" name="text"></textarea>
+                        </div>
+                        <div class="span12 field-box textarea">
+                            <label>文章标签：</label>
+                            <input class="span9" type="text" id="content-labels"/>
+                            <span class="charactersleft">多个标签使用[ ; ](字母输入法)隔开</span>
+                        </div>
+                        <div class="span11 field-box actions">
+                            <input type="button" class="btn-glow primary" id="content-save-click" value="保存"/>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- side right column -->
+                <div class="span3 form-sidebar pull-right">
+                    <h3>文章分类</h3><br>
+                    <div class="span12 field-box">
+                        <label>分类选择：</label>
+                        <select class="category-list-picker"
+                                onchange="catePicker(this.options[this.options.selectedIndex].index,'<%= JSON.stringify(treeList) %>')">
+                            <% for (var i = 0;i < treeList.length;i++) { var cate = treeList[i] %>
+                            <option value="<%= cate.id %>"><%= cate.name %></option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div class="span12 field-box">
+                        <label>类型选择：</label>
+                        <select class="type-list-picker"></select>
+                    </div>
+                    <div class="span12 field-box"></div>
+                    <h3>专栏</h3><br>
+                    <div class="span12 field-box right-special-div">
+                        <label>专栏选择：</label>
+                        <select class="special-list-picker">
+                            <option value=""> —— 无 ——</option>
+                            <% for (var i = 0;i < specialList.length;i++) { var special = specialList[i] %>
+                            <option value="<%= special.id %>"><%= special.name %></option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div class="span12 field-box"></div>
+                    <h3>顶置</h3><br>
+                    <div class="span12 field-box right-special-div">
+                        <label>是否顶置：</label>
+                        <select class="top-list-picker">
+                            <option value=""> —— ——</option>
+                            <option value="1">顶置</option>
+                            <option value="0">普通</option>
+                        </select>
+                    </div>
+                    <div class="span11 field-box"></div>
+                    <h3>推荐</h3><br>
+                    <div class="span12 field-box right-special-div">
+                        <label>是否推荐：</label>
+                        <select class="recommend-list-picker">
+                            <option value=""> —— ——</option>
+                            <option value="1">推荐</option>
+                            <option value="0">普通</option>
+                        </select>
+                    </div>
+                    <div class="span11 field-box"></div>
+                    <h3>文章状态</h3><br>
+                    <div class="span12 field-box right-special-div">
+                        <label>是否发布：</label>
+                        <select class="status-list-picker">
+                            <option value=""> —— ——</option>
+                            <option value="-1" selected>草稿</option>
+                            <option value="1">正文</option>
+                            <option value="2">回收站</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end main container -->

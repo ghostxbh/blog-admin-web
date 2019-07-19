@@ -21,8 +21,9 @@ const api = {
     },
     content: {
         create: (data) => http.post(`${prefix}/admin/contents/create`, data),
+        addPage: () => http.get(`${prefix}/admin/contents/addpage`),
         delete: (id) => http.del(`${prefix}/admin/contents/delete/${id}`),
-        update: (id, data) => http.put(`${prefix}/admin/contents/update/${id}`, data)
+        update: (id, data) => http.put(`${prefix}/admin/contents/update/${id}`, data),
     },
     label: {
         create: (data) => http.post(`${prefix}/admin/labels/create`, data),
