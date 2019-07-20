@@ -6,9 +6,14 @@ var router = express.Router();
 const api = require('../../service/http-api');
 const ui = require('../../views/ui/index');
 router.get('/', function (req, res, next) {
-    api.content.list()
+    let {pageNum, pageSize} = req.query;
+    if (!pageNum && !pageSize) {
+        req.query.pageNum = 1;
+        req.query.pageSize = 10;
+    }
+    api.content.list(req.query)
         .then(data => {
-            let content_list_html = ui.content.contentList(data.data);
+            let content_list_html = ui.content.contentList(data.data.contents);
             res.render('root', {
                 layout: 'page/content/content-list',
                 title: '文章列表',

@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div id="pad-wrapper" class="users-list">
             <div class="row-fluid header">
-                <h3>友链列表</h3>
+                <h3>文章列表</h3>
                 <div class="form-group">
                     <span class="type-category">上下线列表：</span>
                     <select class="selectpicker" id="type-category-list"
@@ -26,16 +26,19 @@
                             序号
                         </th>
                         <th class="span2 sortable">
-                            url
-                        </th>
-                        <th class="span2 sortable">
-                            名称
+                            标题
                         </th>
                         <th class="span1 sortable">
-                            跳转数
+                            来源
                         </th>
                         <th class="span1 sortable">
-                            排序
+                            阅读量
+                        </th>
+                        <th class="span1 sortable">
+                            评论数
+                        </th>
+                        <th class="span1 sortable">
+                            点赞数
                         </th>
                         <th class="span1 sortable">
                             状态
@@ -43,7 +46,7 @@
                         <th class="span2 sortable">
                             创建时间
                         </th>
-                        <th class="span2 sortable">
+                        <th class="span1 sortable">
                             操作
                         </th>
                     </tr>
@@ -55,31 +58,28 @@
                             <%= i + 1 %>
                         </td>
                         <td>
-                            <a href="<%= link.url %>" target="_blank"><%= link.url %></a>
+                            <%= link.title %>
                         </td>
                         <td>
-                            <%= link.name %>
+                            <%= link.source %>
                         </td>
                         <td>
-                            <%= link.clickNum %>
+                            <%= link.readNum %>
                         </td>
                         <td>
-                            <%= link.sort %>
+                            <%= link.remarkNum %>
                         </td>
                         <td>
-                            <% if(link.status > 0){ %>
-                                上线
-                            <% }else { %>
-                                下线
-                            <% } %>
+                            <%= link.admireNum %>
+                        </td>
+                        <td>
+                            <%= link.status %>
                         </td>
                         <td>
                             <%= link.createTime %>
                         </td>
                         <td>
-                            <button class="btn btn-info" onclick="modifyClick('<%= JSON.stringify(link) %>')">修改
-                            </button>
-                            <button class="btn btn-danger" onclick="deleteClick('<%= link.id %>')">删除</button>
+                            <button class="btn btn-primary" onclick="">详情</button>
                         </td>
                     </tr>
                     <% } %>
