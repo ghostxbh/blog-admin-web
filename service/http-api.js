@@ -25,6 +25,7 @@ const api = {
         delete: (id) => http.del(`${prefix}/admin/contents/delete/${id}`),
         update: (id, data) => http.put(`${prefix}/admin/contents/update/${id}`, data),
         list: (data) => http.post(`${prefix}/admin/contents/list`, data),
+        content: (id) => http.get(`${prefix}/admin/contents/${id}`),
     },
     label: {
         create: (data) => http.post(`${prefix}/admin/labels/create`, data),
