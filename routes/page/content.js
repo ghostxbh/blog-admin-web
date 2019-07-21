@@ -43,15 +43,13 @@ router.get('/add', function (req, res, next) {
 });
 
 router.get('/:id', function (req, res, next) {
-    let {id} = req.params;
-    api.special.detail(id)
+    api.content.content(req.params.id)
         .then(data => {
-            let special = data.data;
-            let special_info_html = ui.special.specialInfo(special);
+            let content_info_html = ui.content.contentInfo(data.data);
             res.render('root', {
-                layout: 'page/special/special-info',
+                layout: 'page/content/content-info',
                 title: '专栏详情',
-                special_info_html
+                content_info_html
             });
         })
         .catch(e => {

@@ -1,6 +1,6 @@
 $(function () {
     editormd("test-editormd", {
-        width: "90%",
+        width: "70%",
         height: 640,
         syncScrolling: "single",
         //你的lib目录的路径，
@@ -12,12 +12,14 @@ $(function () {
         imageUploadURL: "/upload/image",
     });
     $('#content-save-click').click(function () {
+        let type = $('#change-content-type').val();
         let title = $('#content-title').val();
         let introduction = $('#content-introduction').val();
         let images = $('#content-images').val();
         if (!images) images = $('#content-url').val();
         let source = $('#content-source').val();
         let content = $('.editormd-html-textarea').val();
+        let contentMd = $('.editormd-markdown-textarea').val();
         let labels = $('#content-labels').val();
         let typeId = $('.type-list-picker').val();
         let specialId = $('.special-list-picker').val();
@@ -32,13 +34,33 @@ $(function () {
             $('.type-list-picker').css('border', '1px solid red');
             return;
         }
-        create({title, introduction, images, source, content, status, typeId, specialId, labels});
+        if (type == 'add') {
+            create({title, introduction, images, source, content, contentMd, status, typeId, specialId, labels});
+        } else if (type == 'update') {
+            let id = $('#content-id').val();
+            update({id, title, introduction, images, source, content, contentMd, status, typeId, specialId, labels});
+        }
     })
 });
 
 function create(content) {
     $.ajax({
         url: "/content/add",
+        type: "post",
+        data: content,
+        success: function (result) {
+            console.log(result);
+        },
+        error: function (xhr, state, errorThrown) {
+            alert("更新失败！");
+            requesFail(xhr);
+        }
+    });
+}
+
+function update(content) {
+    $.ajax({
+        url: "/content/update/" + content.id,
         type: "post",
         data: content,
         success: function (result) {
