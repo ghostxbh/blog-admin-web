@@ -5,6 +5,7 @@ const label = require('./label/label-list');
 const link = require('./link/link-list');
 const remark = require('./remark/remark-list');
 const content = require('./content/index');
+const home = require('./home/home-page');
 module.exports = {
     category,
     type,
@@ -13,4 +14,5 @@ module.exports = {
     link,
     remark,
     content,
+    home
 };

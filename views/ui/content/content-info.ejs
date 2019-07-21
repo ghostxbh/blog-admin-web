@@ -3,26 +3,28 @@
     <div class="container-fluid">
         <div id="pad-wrapper" class="new-user">
             <div class="row-fluid header">
-                <h3>写文章</h3>
+                <h3>文章详情</h3>
             </div>
             <div class="row-fluid form-wrapper">
                 <!-- left column -->
                 <div class="span9 with-sidebar">
                     <div class="container">
                         <form class="new_user_form inline-input"/>
-                        <input type="hidden" id="change-content-type" value="add"/>
+                        <input type="hidden" id="change-content-type" value="update"/>
+                        <input type="hidden" id="content-id" value="<%= content.id %>"/>
                         <div class="span12 field-box">
                             <label>标题：</label>
-                            <input class="span9" type="text" id="content-title"/>
+                            <input class="span9" type="text" id="content-title" value="<%= content.title %>"/>
                         </div>
                         <div class="span12 field-box textarea">
                             <label>简介：</label>
-                            <textarea class="span9" id="content-introduction"></textarea>
+                            <textarea class="span9" id="content-introduction"><%= content.introduction %></textarea>
                             <span class="charactersleft">120字以内</span>
                         </div>
                         <div class="span12 field-box">
                             <label>图片预览：</label>
-                            <img style="border:1px solid #f2dede;" id="content-images" height="200" width="300"/>
+                            <img style="border:1px solid #f2dede;" id="content-images" height="200" width="300"
+                                 src="<%= content.images %>"/>
                         </div>
                         <div class="span12 field-box">
                             <label>图片上传：</label>
@@ -31,21 +33,23 @@
                         </div>
                         <div class="span12 field-box">
                             <label>网络图片：</label>
-                            <input class="span9" type="text" id="content-url" onchange="showImage(this.value)"/>
+                            <input class="span9" type="text" id="content-url" onchange="showImage(this.value)"
+                                   value="<%= content.images %>"/>
                         </div>
                         <div class="span12 field-box">
                             <label>文章来源：</label>
-                            <input class="span9" type="text" id="content-source"/>
+                            <input class="span9" type="text" id="content-source" value="<%= content.source %>"/>
                         </div>
                         <label>文章内容：</label>
                         <div class="span12 field-box textarea editormd" id="test-editormd">
-                            <textarea class="editormd-markdown-textarea" name="test-editormd-markdown-doc"></textarea>
+                            <textarea class="editormd-markdown-textarea"
+                                      name="test-editormd-markdown-doc"><%= content.contentMd %></textarea>
                             <!-- 第二个隐藏文本域，用来构造生成的HTML代码，方便表单POST提交，这里的name可以任意取，后台接受时以这个name键为准 -->
                             <textarea class="editormd-html-textarea" name="text"></textarea>
                         </div>
                         <div class="span12 field-box textarea">
                             <label>文章标签：</label>
-                            <input class="span9" type="text" id="content-labels"/>
+                            <input class="span9" type="text" id="content-labels" value="<%= content.labels %>"/>
                             <span class="charactersleft">多个标签使用[ ; ](字母输入法)隔开</span>
                         </div>
                         <div class="span11 field-box actions">
@@ -63,13 +67,15 @@
                         <select class="category-list-picker"
                                 onchange="catePicker(this.options[this.options.selectedIndex].index,'<%= JSON.stringify(treeList) %>')">
                             <% for (var i = 0;i < treeList.length;i++) { var cate = treeList[i] %>
-                            <option value="<%= cate.id %>"><%= cate.name %></option>
+                            <option value="<%= cate.id %>" <%= cate.id == content.categoryId ? 'selected' : '' %>><%= cate.name %></option>
                             <% } %>
                         </select>
                     </div>
                     <div class="span12 field-box">
                         <label>类型选择：</label>
-                        <select class="type-list-picker"></select>
+                        <select class="type-list-picker">
+                            <option value="<%= content.typeId %>"><%= content.typeName %></option>
+                        </select>
                     </div>
                     <div class="span12 field-box"></div>
                     <h3>专栏</h3><br>
@@ -78,7 +84,9 @@
                         <select class="special-list-picker">
                             <option value=""> —— 无 ——</option>
                             <% for (var i = 0;i < specialList.length;i++) { var special = specialList[i] %>
-                            <option value="<%= special.id %>"><%= special.name %></option>
+                            <option value="<%= special.id %>"
+                                    <% special.id == content.specialId ? 'selected' : '' %>
+                            ><%= special.name %></option>
                             <% } %>
                         </select>
                     </div>
@@ -87,9 +95,8 @@
                     <div class="span12 field-box right-special-div">
                         <label>是否顶置：</label>
                         <select class="top-list-picker">
-                            <option value=""> —— ——</option>
-                            <option value="1">顶置</option>
-                            <option value="0">普通</option>
+                            <option value="1" <%= content.top == 1 ? 'selected' : '' %>>顶置</option>
+                            <option value="0" <%= content.top == 0 ? 'selected' : '' %>>普通</option>
                         </select>
                     </div>
                     <div class="span11 field-box"></div>
@@ -97,9 +104,8 @@
                     <div class="span12 field-box right-special-div">
                         <label>是否推荐：</label>
                         <select class="recommend-list-picker">
-                            <option value=""> —— ——</option>
-                            <option value="1">推荐</option>
-                            <option value="0">普通</option>
+                            <option value="1" <%= content.recommend == 1 ? 'selected' : '' %>>推荐</option>
+                            <option value="0" <%= content.recommend == 0 ? 'selected' : '' %>>普通</option>
                         </select>
                     </div>
                     <div class="span11 field-box"></div>
@@ -107,10 +113,9 @@
                     <div class="span12 field-box right-special-div">
                         <label>是否发布：</label>
                         <select class="status-list-picker">
-                            <option value=""> —— ——</option>
-                            <option value="-1" selected>草稿</option>
-                            <option value="1">正文</option>
-                            <option value="2">回收站</option>
+                            <option value="-1" <%= content.status == -1 ? 'selected' : '' %>>草稿</option>
+                            <option value="1" <%= content.status == 1 ? 'selected' : '' %>>正文</option>
+                            <option value="2" <%= content.status == 2 ? 'selected' : '' %>>回收站</option>
                         </select>
                     </div>
                 </div>

@@ -13,8 +13,8 @@
                         <option value="-1" <%= status == '-1' ? 'selected' :''%>>下线</option>
                     </select>
                 </div>
-                <div style="margin-left: 82.3%">
-                    <button class="btn btn-success" id="link-add">添加</button>
+                <div style="margin-left: 89.5%">
+                    <a class="btn btn-success" href="/content/add">添加</a>
                 </div>
             </div>
             <!-- Users table -->
@@ -52,34 +52,34 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <% for (var i = 0;i < list.length;i++) { var link = list[i] %>
+                    <% for (var i = 0;i < list.length;i++) { var content = list[i] %>
                     <tr>
                         <td>
                             <%= i + 1 %>
                         </td>
                         <td>
-                            <%= link.title %>
+                            <%= content.title %>
                         </td>
                         <td>
-                            <%= link.source %>
+                            <%= content.source %>
                         </td>
                         <td>
-                            <%= link.readNum %>
+                            <%= content.readNum %>
                         </td>
                         <td>
-                            <%= link.remarkNum %>
+                            <%= content.remarkNum %>
                         </td>
                         <td>
-                            <%= link.admireNum %>
+                            <%= content.admireNum %>
                         </td>
                         <td>
-                            <%= link.status %>
+                            <%= content.status %>
                         </td>
                         <td>
-                            <%= link.createTime %>
+                            <%= content.createTime %>
                         </td>
                         <td>
-                            <button class="btn btn-primary" onclick="">详情</button>
+                            <a class="btn btn-primary" href="/content/<%= content.id %>">详情</a>
                         </td>
                     </tr>
                     <% } %>
