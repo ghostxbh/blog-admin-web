@@ -76,7 +76,7 @@
                     <div class="span12 field-box right-special-div">
                         <label>专栏选择：</label>
                         <select class="special-list-picker">
-                            <option value=""> —— 无 ——</option>
+                            <option value="0"></option>
                             <% for (var i = 0;i < specialList.length;i++) { var special = specialList[i] %>
                             <option value="<%= special.id %>"><%= special.name %></option>
                             <% } %>
@@ -87,9 +87,8 @@
                     <div class="span12 field-box right-special-div">
                         <label>是否顶置：</label>
                         <select class="top-list-picker">
-                            <option value=""> —— ——</option>
+                            <option value="0" selected>普通</option>
                             <option value="1">顶置</option>
-                            <option value="0">普通</option>
                         </select>
                     </div>
                     <div class="span11 field-box"></div>
@@ -97,9 +96,8 @@
                     <div class="span12 field-box right-special-div">
                         <label>是否推荐：</label>
                         <select class="recommend-list-picker">
-                            <option value=""> —— ——</option>
+                            <option value="0" selected>普通</option>
                             <option value="1">推荐</option>
-                            <option value="0">普通</option>
                         </select>
                     </div>
                     <div class="span11 field-box"></div>
@@ -107,7 +105,6 @@
                     <div class="span12 field-box right-special-div">
                         <label>是否发布：</label>
                         <select class="status-list-picker">
-                            <option value=""> —— ——</option>
                             <option value="-1" selected>草稿</option>
                             <option value="1">正文</option>
                             <option value="2">回收站</option>
