@@ -53,7 +53,9 @@
                             <span class="charactersleft">多个标签使用[ ; ](字母输入法)隔开</span>
                         </div>
                         <div class="span11 field-box actions">
-                            <input type="button" class="btn-glow primary" id="content-save-click" value="保存"/>
+                            <input type="button" class="btn-glow success" id="content-save-click" value="保存"/>
+                            <span>OR</span>
+                            <a class="btn btn-danger" onclick="delContent('<%= content.id %>')">删除</a>
                         </div>
                         </form>
                     </div>
@@ -82,7 +84,7 @@
                     <div class="span12 field-box right-special-div">
                         <label>专栏选择：</label>
                         <select class="special-list-picker">
-                            <option value=""> —— 无 ——</option>
+                            <option value="0"></option>
                             <% for (var i = 0;i < specialList.length;i++) { var special = specialList[i] %>
                             <option value="<%= special.id %>"
                                     <% special.id == content.specialId ? 'selected' : '' %>

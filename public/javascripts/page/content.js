@@ -73,6 +73,21 @@ function update(content) {
     });
 }
 
+function delContent(id) {
+    $.ajax({
+        url: "/content/del/" + id,
+        type: "get",
+        data: {},
+        success: function (result) {
+            console.log(result);
+        },
+        error: function (xhr, state, errorThrown) {
+            alert("更新失败！");
+            requesFail(xhr);
+        }
+    });
+}
+
 function catePicker(index, treeList) {
     treeList = JSON.parse(treeList);
     let typeList = treeList[index].children;

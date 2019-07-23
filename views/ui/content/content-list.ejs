@@ -9,8 +9,8 @@
                     <select class="selectpicker" id="type-category-list"
                             onchange="ListByStatus(this.options[this.options.selectedIndex].value)" data-size="8">
                         <option value="0">全部</option>
-                        <option value="1" <%= status == '1' ? 'selected' :''%>>上线</option>
-                        <option value="-1" <%= status == '-1' ? 'selected' :''%>>下线</option>
+                        <option value="1" <%= status == '1' ? 'selected' : '' %>>上线</option>
+                        <option value="-1" <%= status == '-1' ? 'selected' : '' %>>下线</option>
                     </select>
                 </div>
                 <div style="margin-left: 89.5%">
@@ -46,7 +46,7 @@
                         <th class="span2 sortable">
                             创建时间
                         </th>
-                        <th class="span1 sortable">
+                        <th class="span2 sortable">
                             操作
                         </th>
                     </tr>
@@ -80,6 +80,7 @@
                         </td>
                         <td>
                             <a class="btn btn-primary" href="/content/<%= content.id %>">详情</a>
+                            <a class="btn btn-danger" onclick="delContent('<%= content.id %>')">删除</a>
                         </td>
                     </tr>
                     <% } %>
