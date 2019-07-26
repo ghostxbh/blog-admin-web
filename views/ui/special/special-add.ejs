@@ -10,7 +10,6 @@
                 <div class="span9 with-sidebar">
                     <div class="container">
                         <form class="new_user_form inline-input"/>
-                        <input type="hidden" id="special-image-url" value=""/>
                         <div class="span12 field-box">
                             <label>名称:</label>
                             <input class="span9" type="text" id="special-name"/>
@@ -26,10 +25,14 @@
                                  width="300px"/>
                         </div>
                         <div class="span12 field-box">
+                            <label>图片地址：</label>
+                            <input class="span9" type="text" id="special-url" onchange="showImage(this.value)"/>
+                        </div>
+                        <!--<div class="span12 field-box">
                             <label>图片上传:</label>
                             <input class="span9 imginfo" id="img-input" type="file" accept=".png,.jpg,.gif"/>
                             <button class="btn btn-success"  style="margin-left: 2.7%" onclick="upload_img()">上传</button>
-                        </div>
+                        </div>-->
                         <div class="span12 field-box">
                             <label>排序:</label>
                             <input class="span9" type="text" id="special-sort" placeholder="专栏排序"/>

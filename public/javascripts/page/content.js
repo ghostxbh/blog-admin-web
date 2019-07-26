@@ -9,7 +9,8 @@ $(function () {
         saveHTMLToTextarea: true,
         imageUpload: true,
         imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-        imageUploadURL: "/upload/image",
+        imageUploadURL: "/upload/img",
+        htmlDecode : true, // Decode all html tags & attributes
     });
     $('#content-save-click').click(function () {
         let type = $('#change-content-type').val();

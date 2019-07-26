@@ -8,12 +8,13 @@
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
-    "editor.md": "^1.5.0",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "multiparty": "^4.2.1",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "node-uuid": "^1.4.8",
+    "qiniu": "^7.2.2"
   }
 }

@@ -1,7 +1,7 @@
 $(function () {
     $('#special-create-click').click(function () {
         let name = $('#special-name').val();
-        let image = $('#special-image-url').val();
+        let image = $('#special-url').val();
         let description = $('#description').val();
         let sort = $('#special-sort').val();
         if (!name) {
@@ -13,7 +13,7 @@ $(function () {
     $('#special-update-click').click(function () {
         let id = $('#special-id').val();
         let name = $('#special-name').val();
-        let image = $('#special-image-url').val();
+        let image = $('#special-url').val();
         let description = $('#description').val();
         let sort = $('#special-sort').val();
         let readNum = $('#special-read-num').val();
@@ -75,5 +75,10 @@ function deleteClick(id) {
             requesFail(xhr);
         }
     });
+}
+
+
+function showImage(url) {
+    $('#show-img').attr('src', url);
 }
 

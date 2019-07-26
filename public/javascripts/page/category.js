@@ -1,4 +1,5 @@
 $(function () {
+
     $('#category-add').click(function () {
         $('#myModalLabel').empty().text('添加分类');
         let html = `<input type="hidden" class="input_type" value="add">
