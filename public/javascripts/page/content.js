@@ -39,7 +39,7 @@ $(function () {
             create({title, introduction, images, source, content, contentMd, status, typeId, specialId, labels});
         } else if (type == 'update') {
             let id = $('#content-id').val();
-            update({id, title, introduction, images, source, content, contentMd, status, typeId, specialId, labels});
+            update({id, title, introduction, images, source, content, contentMd, top, recommend, status, typeId, specialId, labels});
         }
     })
 });

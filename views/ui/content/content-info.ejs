@@ -86,9 +86,9 @@
                         <select class="special-list-picker">
                             <option value="0"></option>
                             <% for (var i = 0;i < specialList.length;i++) { var special = specialList[i] %>
-                            <option value="<%= special.id %>"
-                                    <% special.id == content.specialId ? 'selected' : '' %>
-                            ><%= special.name %></option>
+                            <option value="<%= special.id %>" <%= special.id == content.specialId ? 'selected' : '' %>>
+                                <%= special.name %>
+                            </option>
                             <% } %>
                         </select>
                     </div>
