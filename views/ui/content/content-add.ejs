@@ -60,8 +60,7 @@
                     <h3>文章分类</h3><br>
                     <div class="span12 field-box">
                         <label>分类选择：</label>
-                        <select class="category-list-picker"
-                                onchange="catePicker(this.options[this.options.selectedIndex].index,'<%= JSON.stringify(treeList) %>')">
+                        <select class="category-list-picker" onchange="catePicker(this.options[this.options.selectedIndex].index,'<%= JSON.stringify(treeList) %>')">
                             <% for (var i = 0;i < treeList.length;i++) { var cate = treeList[i] %>
                             <option value="<%= cate.id %>"><%= cate.name %></option>
                             <% } %>
