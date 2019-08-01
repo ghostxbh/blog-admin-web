@@ -6,12 +6,8 @@ var router = express.Router();
 const api = require('../../service/http-api');
 const ui = require('../../views/ui/index');
 router.get('/', function (req, res, next) {
-    let {pageNum, pageSize} = req.query;
-    if (!pageNum && !pageSize) {
-        req.query.pageNum = 1;
-        req.query.pageSize = 10;
-    }
-    api.content.list(req.query)
+    let {keyword = '', typeId = '', specialId = '', labels = '', pageNum = 1, pageSize = 10} = req.query;
+    api.content.list({keyword, typeId, specialId, labels, pageNum, pageSize})
         .then(data => {
             let content_list_html = ui.content.contentList(data.data.contents);
             res.render('root', {
