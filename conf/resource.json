@@ -1,9 +1,9 @@
 {
     "name":"blog-admin-web",
-    "port":8090,
+    "port":8002,
     "description":"博客后台管理",
     "url":{
-        "api":"http://127.0.0.1:8080"
+        "api":"http://127.0.0.1:8001"
     },
     "img_add":"/var/www/html/images/",
     "img_url":"http://static.uzykj.com/images/",
