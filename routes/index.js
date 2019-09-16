@@ -12,4 +12,6 @@ router.use('/special', require('./page/special'));
 router.use('/label', require('./page/label'));
 router.use('/link', require('./page/link'));
 router.use('/upload', require('./user/img-upload'));
+
+router.use('/test', require('./test'));
 module.exports = router;
