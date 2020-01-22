@@ -3,7 +3,7 @@
     "port":8150,
     "description":"博客后台管理",
     "url":{
-        "api":"http://172.17.0.3:8100"
+        "api":"http://127.0.0.1:8100"
     },
     "img_add":"/var/www/html/images/",
     "img_url":"http://static.uzykj.com/images/",
