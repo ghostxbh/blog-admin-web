@@ -14,4 +14,6 @@ router.use('/link', require('./page/link'));
 router.use('/upload', require('./user/img-upload'));
 
 router.use('/test', require('./test'));
+
+router.use('/sms', require('./sms'));
 module.exports = router;
