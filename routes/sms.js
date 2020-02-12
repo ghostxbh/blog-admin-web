@@ -7,16 +7,18 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/callback.action', function (req, res, next) {
-    const param = req.params || req.header.params;
-    console.log('get: ', param);
-    console.log('get req: ', req);
+    const params = req.params;
+    const header = req.headers;
+    const query = req.query;
+    console.log('GET params: ', params);
+    console.log('GET header: ', header);
+    console.log('GET query: ', query);
     res.status(200).send('delivrd');
 });
 
 router.post('/callback.action', function (req, res, next) {
     const param = req.body;
     console.log('post: ', param);
-    console.log('post req: ', req);
     res.status(200).send('delivrd');
 });
 
