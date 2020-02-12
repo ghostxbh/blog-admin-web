@@ -6,7 +6,7 @@
 var express = require('express');
 var router = express.Router();
 
-router.post('/callback.action', function (req, res, next) {
+router.get('/callback.action', function (req, res, next) {
     const param = req.body || req.params;
     console.log(param);
     res.status(200).send('delivrd');
